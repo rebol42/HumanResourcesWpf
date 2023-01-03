@@ -1,0 +1,92 @@
+﻿<mah:MetroWindow x:Class="HumanResourcesWpfApp.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"     
+        xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"         
+        xmlns:local="clr-namespace:HumanResourcesWpfApp"    
+        xmlns:my="clr-namespace:HumanResourcesWpfApp.Models"  
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        mc:Ignorable="d"
+         WindowStartupLocation="CenterScreen"
+        Title="Program Kadrowy" Height="450" Width="1120">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedWindowCommand}" />
+        </i:EventTrigger>
+       
+    </i:Interaction.Triggers>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="28*"/>
+            <ColumnDefinition Width="419*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Grid.ColumnSpan="2" Margin="0,0,-0.4,0">
+            <Button 
+                Content="Dodaj" 
+                Command="{Binding AddEmployeeCommand}"
+                Height="25" 
+                Width="100" 
+                Margin="5"/>
+            <Button  
+                Content="Edytuj" 
+                Command="{Binding EditEmployeeCommand}"
+                CommandParameter="{Binding SelectedEmployee}"
+                Height="25" 
+                Width="100" 
+                Margin="5"/>
+
+            <ComboBox 
+                    ItemsSource="{Binding EmplStatusCombo}"
+                    SelectedValue="{Binding SelectedEmplStatus}"
+                    Height="25" 
+                      Width="150"
+                      Margin="5 " 
+                      />
+
+            <Button 
+                Command="{Binding RefreshEmployeeCommand}" 
+                Content="Odświerz" 
+                Height="25" 
+                Width="100" 
+                Margin="5"/>
+            <Button  
+                Content="Ustawienia" 
+                Command="{Binding DatabaseSettingsCommand}"
+                Height="25" 
+                Width="100" 
+                Margin="5"/>
+
+        </StackPanel>
+        <DataGrid 
+                Grid.Row="1" 
+                Margin="5,5,4.6,5"
+                ItemsSource = "{Binding Employees}"
+                SelectedItem = "{Binding SelectedEmployee}"
+                CanUserAddRows="False"
+                IsReadOnly="True"
+                SelectionMode="Single"
+                AutoGenerateColumns="False" Grid.ColumnSpan="2">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Id}"  Visibility="Hidden"/>
+                <DataGridTextColumn Binding="{Binding FirstName}" Header="Imię"/>
+                <DataGridTextColumn Binding="{Binding LastName}"  Header="Nazwisko"/>
+                <DataGridTextColumn Binding="{Binding Pesel}"  Header="Pesel"/>
+                <DataGridTextColumn Binding="{Binding BirthDate}"  Header="Data urodzenia"/>
+                <DataGridTextColumn Binding="{Binding Street}"  Header="Ulica"/>
+                <DataGridTextColumn Binding="{Binding ZipCode}"     Header="Kod pocztowy"/>
+                <DataGridTextColumn Binding="{Binding City}"  Header="Miasto"/>
+                <DataGridTextColumn Binding="{Binding EmploymentDate}"  Header="Data zatrudnienia"/>
+                <DataGridTextColumn Binding="{Binding LayOffDate}"  Header="Data zwolnienia"/>
+                <DataGridTextColumn Binding="{Binding EmplStatusId}"  Header="Status pracy"/>
+                <DataGridTextColumn Binding="{Binding Salary}"  Header="Wynagrodzenie"/>
+                <DataGridTextColumn Binding="{Binding Comments}"  Header="Uwagi"/>
+            </DataGrid.Columns>
+
+        </DataGrid>
+    </Grid>
+</mah:MetroWindow>

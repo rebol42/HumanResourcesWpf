@@ -1,0 +1,27 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="HumanResourcesWpfApp.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Server" Type="System.String" Scope="User">
+      <Value Profile="(Default)">localhost</Value>
+    </Setting>
+    <Setting Name="ServerDbName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">PR</Value>
+    </Setting>
+    <Setting Name="Database" Type="System.String" Scope="User">
+      <Value Profile="(Default)">WpfHumanResources</Value>
+    </Setting>
+    <Setting Name="User" Type="System.String" Scope="User">
+      <Value Profile="(Default)">dbCon</Value>
+    </Setting>
+    <Setting Name="Password" Type="System.String" Scope="User">
+      <Value Profile="(Default)">123</Value>
+    </Setting>
+    <Setting Name="LoginUser" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Admin</Value>
+    </Setting>
+    <Setting Name="LoginPass" Type="System.String" Scope="User">
+      <Value Profile="(Default)">a</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
