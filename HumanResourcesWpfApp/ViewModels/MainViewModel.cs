@@ -21,7 +21,7 @@ namespace HumanResourcesWpfApp.ViewModels
     {
         private Repository _repository = new Repository();
 
-        private DatabaseSettingsModel DbSettings = new DatabaseSettingsModel(false);
+      //  private DatabaseSettingsModel DbSettings = new DatabaseSettingsModel(false);
 
         public MainViewModel()
         {
@@ -33,43 +33,21 @@ namespace HumanResourcesWpfApp.ViewModels
                var employees = context.Employees.ToList();
            }
            */
-           
                 AddEmployeeCommand = new RelayCommand(AddEditEmployee);
                 EditEmployeeCommand = new RelayCommand(AddEditEmployee, CanEditEmployee);
                 DatabaseSettingsCommand = new RelayCommand(DatabaseSettings);
                 RefreshEmployeeCommand = new RelayCommand(RefreshEmployee);
-                LoadedWindowCommand = new RelayCommand(LoadedWindow);
+            //  LoadedWindowCommand = new RelayCommand(LoadedWindow);
 
-                LoadedWindow(null);
+            InitComoBox();
+            InitEmployees();
+
+
+            //  LoadedWindow(null);
 
         }
 
-        private  async void LoadedWindow(object obj)
-        {
-            if (!DbSettings.CheckConnection())
-            {
-                var metroWindow = Application.Current.MainWindow as MetroWindow;
-                var dialog = await metroWindow.ShowMessageAsync("Błąd połączenia", $"Nie można połączyć się z bazą danych. Czy chcesz zmienić ustawienia?",
-                    MessageDialogStyle.AffirmativeAndNegative);
-
-
-                if (dialog == MessageDialogResult.Negative)
-                {
-                    Application.Current.Shutdown();
-                }
-                else
-                {
-                    var databseSettigns = new DatabaseSettingsView(false);
-                    databseSettigns.ShowDialog();
-                }
-   
-            }
-            else
-            {
-                InitComoBox();
-                InitEmployees();
-            }
-        }
+        
 
         private void RefreshEmployee(object obj)
         {
@@ -80,7 +58,7 @@ namespace HumanResourcesWpfApp.ViewModels
         public ICommand EditEmployeeCommand { get; set; }
         public ICommand DatabaseSettingsCommand { get; set; }
         public ICommand RefreshEmployeeCommand { get; set; }
-        public ICommand LoadedWindowCommand { get; set; }
+    //    public ICommand LoadedWindowCommand { get; set; }
 
         private EmployeeWrapper _selectedEmployee;
 

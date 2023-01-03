@@ -6,16 +6,10 @@
         xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"         
         xmlns:local="clr-namespace:HumanResourcesWpfApp"    
         xmlns:my="clr-namespace:HumanResourcesWpfApp.Models"  
-        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         mc:Ignorable="d"
          WindowStartupLocation="CenterScreen"
         Title="Program Kadrowy" Height="450" Width="1120">
-    <i:Interaction.Triggers>
-        <i:EventTrigger EventName="Loaded">
-            <i:InvokeCommandAction Command="{Binding LoadedWindowCommand}" />
-        </i:EventTrigger>
-       
-    </i:Interaction.Triggers>
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="28*"/>
